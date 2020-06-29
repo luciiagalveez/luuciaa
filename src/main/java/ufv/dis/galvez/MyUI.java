@@ -27,15 +27,15 @@ public class MyUI extends UI {
         final VerticalLayout layout = new VerticalLayout();
         
         final TextField nombre = new TextField();
-        nombre.setCaption("Type your name here:");
+        nombre.setCaption("Nombre:");
         final TextField ape = new TextField();
-        ape.setCaption("Type your name here:");
+        ape.setCaption("Apellido:");
         final TextField email = new TextField();
-        email.setCaption("Type your name here:");
+        email.setCaption("Email:");
         final TextField DNI = new TextField();
-        DNI.setCaption("Type your name here:");
+        DNI.setCaption("DNI sin letra: ");
         final TextField fnac = new TextField();
-        fnac.setCaption("Type your name here:");
+        fnac.setCaption("Fecha de nacimiento:");
 
         Button button = new Button("GUARDAR");
         button.addClickListener(e -> {
