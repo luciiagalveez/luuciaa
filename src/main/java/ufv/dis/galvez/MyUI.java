@@ -1,16 +1,24 @@
 package ufv.dis.galvez;
 
+import java.io.FileNotFoundException;
+
 import javax.servlet.annotation.WebServlet;
 
+import com.itextpdf.text.DocumentException;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+
+import ufv.dis.galvez.GeneradorPDF;
+import ufv.dis.galvez.Lista;
+import ufv.dis.galvez.Usuario;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -25,6 +33,8 @@ public class MyUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
+        
+        Lista lista = new Lista();
         
         final TextField nombre = new TextField();
         nombre.setCaption("Nombre:");
@@ -41,6 +51,18 @@ public class MyUI extends UI {
         button.addClickListener(e -> {
             layout.addComponent(new Label("Usuario " + nombre.getValue() 
                     + " guardado"));
+            
+          	//paso string a num entero
+        	Usuario u = new Usuario(nombre.getValue(), ape.getValue(), email.getValue(), Integer.parseInt(DNI.getValue()), Integer.parseInt(fnac.getValue()));
+        	lista.addUsuario(u);
+        	
+        	
+        	try{
+        	GeneradorPDF.generarPDF(u);
+        	Notification.show("PDF generado con exito!");
+        	}catch (FileNotFoundException | DocumentException e1){
+        	e1.printStackTrace();
+        	}
         });
         
         layout.addComponents(nombre, ape, email, DNI, fnac, button);
