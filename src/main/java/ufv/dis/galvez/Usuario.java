@@ -6,15 +6,15 @@ public class Usuario {
 	String ape;
 	String email;
 	int DNI;
-	String fnac;
+	int fnac;
 	
-	public Usuario(String nombre, String ape, String email, int dNI, String fnac) {
+	public Usuario(String nombre, String ape, String email, int dNI, int Fnac) {
 		super();
 		this.nombre = nombre;
 		this.ape = ape;
 		this.email = email;
 		DNI = dNI;
-		this.fnac = fnac;
+		fnac = Fnac;
 	}
 
 	public String getNombre() {
@@ -49,14 +49,16 @@ public class Usuario {
 		DNI = dNI;
 	}
 
-	public String getFnac() {
+	public int getFnac() {
 		return fnac;
 	}
 
-	public void setFnac(String fnac) {
+	public void setFnac(int fnac) {
 		this.fnac = fnac;
 	}
-	
-	
+
+	public boolean IsAdult() { //metodo para comprobar edad
+		return fnac >= 2001; //devuelve verdadero o falso
+	}
 
 }
