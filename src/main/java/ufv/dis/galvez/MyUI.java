@@ -26,16 +26,24 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        final TextField nombre = new TextField();
+        nombre.setCaption("Type your name here:");
+        final TextField ape = new TextField();
+        ape.setCaption("Type your name here:");
+        final TextField email = new TextField();
+        email.setCaption("Type your name here:");
+        final TextField DNI = new TextField();
+        DNI.setCaption("Type your name here:");
+        final TextField fnac = new TextField();
+        fnac.setCaption("Type your name here:");
 
-        Button button = new Button("Click Me");
+        Button button = new Button("GUARDAR");
         button.addClickListener(e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+            layout.addComponent(new Label("Usuario " + nombre.getValue() 
+                    + " guardado"));
         });
         
-        layout.addComponents(name, button);
+        layout.addComponents(nombre, ape, email, DNI, fnac, button);
         
         setContent(layout);
     }
